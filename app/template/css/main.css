@@ -1,0 +1,98 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,500,700);
+
+html {
+    height: 100%;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  color: #554a64;
+  background: #040208;
+  font-family: 'Roboto', sans-serif;
+  height: 100%;
+  background: -moz-radial-gradient(center, ellipse cover, #070619 0%, #040208 100%);
+  background: -webkit-radial-gradient(center, ellipse cover, #070619 0%, #040208 100%);
+  background: -o-radial-gradient(center, ellipse cover, #070619 0%, #040208 100%);
+  background: -ms-radial-gradient(center, ellipse cover, #070619 0%, #040208 100%);
+  background: radial-gradient(center, ellipse cover, #070619 0%, #040208 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+a {
+  color: #554a64;
+  text-decoration: none;
+}
+.active, li.active > a {
+  color: white;
+  font-weight: 400;
+}
+ul, li {
+  list-style: none;
+}
+
+app-content {
+  width: 800px;
+  height: 480px;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  margin: -240px -400px;;
+}
+
+header {
+  text-align: center;
+  width: 100%;
+  padding: 40px 0;
+}
+header > .logo {
+  font-size: 20px;
+}
+
+.leftmenu > ul > li {
+  padding: 10px 0;
+  position: relative;
+}
+.leftmenu > ul > li > a {
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.leftmenu li:before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  margin-left: -25px;
+  opacity: 0.2;
+}
+.leftmenu li.active:before {
+  opacity: 1;
+}
+.leftmenu li.temperature:before {
+  background: url('../img/themometer.svg') no-repeat;
+  background-size: 100%;
+}
+.leftmenu li.lights:before {
+  background: url('../img/lights.svg') no-repeat;
+  background-size: 100%;
+}
+.leftmenu li.music:before {
+  background: url('../img/music.svg') no-repeat;
+  background-size: 90%;
+}
+.leftmenu li.energy:before {
+  background: url('../img/energy.svg') no-repeat;
+  background-size: 90%;
+}
+.leftmenu li.store:before {
+  background: url('../img/store.svg') no-repeat;
+  background-size: 90%;
+}
+.leftmenu li.service:before {
+  background: url('../img/service.svg') no-repeat;
+  background-size: 90%;
+}
