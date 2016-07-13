@@ -1,5 +1,7 @@
 import {bootstrap} from '@angular/platform-browser-dynamic';
 import {disableDeprecatedForms, provideForms } from '@angular/forms';
-import {commonPage} from './components/commonPage';
+import { ROUTER_PROVIDERS } from '@angular/router-deprecated';
 
-bootstrap(commonPage, [disableDeprecatedForms(),provideForms()]);
+import {common} from './components/common';
+
+bootstrap(common, [ROUTER_PROVIDERS,disableDeprecatedForms(),provideForms()]);
