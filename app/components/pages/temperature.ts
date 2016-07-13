@@ -7,4 +7,6 @@ import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
   directives: [ROUTER_DIRECTIVES]
 })
 
-export class temperaturePage { }
+export class temperaturePage {
+  
+}

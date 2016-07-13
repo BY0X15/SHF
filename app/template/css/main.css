@@ -50,6 +50,10 @@ header > .logo {
   font-size: 20px;
 }
 
+.leftmenu {
+  width: 200px;
+  float: left;
+}
 .leftmenu > ul > li {
   padding: 10px 0;
   position: relative;
@@ -59,7 +63,6 @@ header > .logo {
   font-weight: 500;
   text-transform: uppercase;
 }
-
 .leftmenu li:before {
   content: '';
   display: block;
@@ -95,4 +98,10 @@ header > .logo {
 .leftmenu li.service:before {
   background: url('../img/service.svg') no-repeat;
   background-size: 90%;
+}
+
+.content {
+  width: 550px;
+  padding: 25px;
+  float: left;
 }
