@@ -1,5 +1,4 @@
 # SHF (System the of House Future)
-# Old name - homeOS
 GUI homeOS on Angular 2
 
 Example GUI in page Temperature.
