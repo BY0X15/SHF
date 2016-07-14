@@ -8,5 +8,11 @@ import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 })
 
 export class temperaturePage {
-  
+  public chosenRoom = "Living room";
+  public outsideTemperature = "+31";
+  //
+  public signTemperature = "+";
+  public valueTemperature = "23";
+  public signDegree = "C";
+  //
 }

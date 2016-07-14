@@ -18,6 +18,13 @@ body {
   background: radial-gradient(center, ellipse cover, #070619 0%, #040208 100%);
   background-repeat: no-repeat;
   background-attachment: fixed;
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 a {
@@ -30,6 +37,9 @@ a {
 }
 ul, li {
   list-style: none;
+}
+.clearfix {
+  clear: both;
 }
 
 app-content {
@@ -44,7 +54,7 @@ app-content {
 header {
   text-align: center;
   width: 100%;
-  padding: 40px 0;
+  padding: 40px 0 30px 0;
 }
 header > .logo {
   font-size: 20px;
@@ -104,4 +114,148 @@ header > .logo {
   width: 550px;
   padding: 25px;
   float: left;
+}
+
+.outsideTemperature {
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 600;
+  float: right;
+}
+.outsideTemperature > .active {
+  font-size: 18px;
+  margin: 5px;
+  font-weight: 600;
+}
+.controlTemperature {
+  width: 300px;
+  height: 300px;
+  background: rgba(22,22,42,0.8);
+  border-radius: 50%;
+  margin: 0 auto;
+  position: relative;
+}
+.controlTemperature .linecircle {
+  background: #262339;
+  background: radial-gradient(center, #262339 80%, #16172a 90%);
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  -webkit-box-shadow: 0px 0px 10px rgba(0,0,0,.8);
+  -moz-box-shadow: 0px 0px 10px rgba(0,0,0,.8);
+  box-shadow: 0px 0px 10px rgba(0,0,0,.8);
+}
+.controlTemperature .linecircle > .blockCold {
+  background: #07faff;
+  box-shadow: 0 0 40px #07faff;
+  height: 23px;
+  width: 10px;
+  position: absolute;
+  right: 78px;
+  top: 9px;
+  transform: rotate(23deg);
+}
+.controlTemperature .linecircle > .blockCold:before {
+  content: 'COLD';
+  display: block;
+  width: 10px;
+  height: 10px;
+  color: #383548;
+  font-size: 10px;
+  font-weight: bold;
+  top: -18px;
+  right: 5px;
+  position: absolute;
+}
+.controlTemperature .linecircle > .blockHot {
+  background: #ff0583;
+  box-shadow: 0 0 40px #ff0583;
+  height: 23px;
+  width: 10px;
+  position: absolute;
+  right: 33px;
+  top: 185px;
+  transform: rotate(-51deg);
+}
+.controlTemperature .linecircle > .blockHot:before {
+  content: 'HOT';
+  display: block;
+  width: 10px;
+  height: 10px;
+  color: #383548;
+  font-size: 10px;
+  font-weight: bold;
+  top: 30px;
+  right: 5px;
+  position: absolute;
+}
+.controlTemperature .backgroundCenter {
+  background: #191b2b;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  -webkit-box-shadow: inset 0px 0px 10px rgba(0,0,0,.5);
+  -moz-box-shadow: inset 0px 0px 10px rgba(0,0,0,.5);
+  box-shadow: inset 0px 0px 10px rgba(0,0,0,.5);
+}
+.controlTemperature .blockInformation {
+  position: relative;
+  width: 130px;
+  margin: 55px 35px;
+}
+.controlTemperature .blockInformation > .signTemperature {
+  font-size: 40px;
+  font-weight: 100;
+  left: 2px;
+  display: block;
+  position: absolute;
+  top: 33px;
+}
+.controlTemperature .blockInformation > .signDegreeT {
+  font-size: 50px;
+  font-weight: 100;
+  right: 6px;
+  display: block;
+  position: absolute;
+  top: 5px;
+}
+.controlTemperature .blockInformation > .signDegreeB {
+  font-size: 25px;
+  font-weight: 400;
+  right: 7px;
+  display: block;
+  position: absolute;
+  top: 44px;
+}
+.controlTemperature .blockInformation > .valueTemperature {
+  font-size: 70px;
+  font-weight: 100;
+  color: white;
+  margin-left: 27px;
+}
+.selectionRoom {
+  margin-top: 10px;
+}
+.selectionRoom .active {
+  font-weight: 300;
+  font-size: 25px;
+  margin-top: -6px;
+  text-transform: inherit;
+}
+.selectionRoom .buttonSelection {
+  float: right;
+  border: 1px solid #554a64;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.selectionRoom .buttonSelection:hover, .selectionRoom .buttonSelection:active {
+  background: #554a64;
+  color: white;
 }
