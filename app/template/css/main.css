@@ -212,7 +212,7 @@ header > .logo {
 .controlTemperature .blockInformation > .signTemperature {
   font-size: 40px;
   font-weight: 100;
-  left: 2px;
+  left: 0px;
   display: block;
   position: absolute;
   top: 33px;
@@ -220,7 +220,7 @@ header > .logo {
 .controlTemperature .blockInformation > .signDegreeT {
   font-size: 50px;
   font-weight: 100;
-  right: 6px;
+  right: 4px;
   display: block;
   position: absolute;
   top: 5px;
@@ -228,7 +228,7 @@ header > .logo {
 .controlTemperature .blockInformation > .signDegreeB {
   font-size: 25px;
   font-weight: 400;
-  right: 7px;
+  right: 5px;
   display: block;
   position: absolute;
   top: 44px;
@@ -241,6 +241,8 @@ header > .logo {
 }
 .selectionRoom {
   margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(85,74,100,0.2);
 }
 .selectionRoom .active {
   font-weight: 300;
