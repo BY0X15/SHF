@@ -2,7 +2,7 @@
   outside <b class="active">{{outsideTemperature}}&deg;</b>
 </div>
 
-<div class="controlTemperature">
+<div id="circle" class="controlTemperature">
   <div class="linecircle">
     <div class="backgroundCenter">
       <div class="blockInformation">
@@ -14,6 +14,7 @@
     </div>
     <span class="blockCold"></span>
     <span class="blockHot"></span>
+    <buttonChangeTemperature [info]="dragChild"></buttonChangeTemperature>
   </div>
 </div>
 
