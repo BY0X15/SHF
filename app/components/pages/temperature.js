@@ -15,11 +15,22 @@ let temperaturePage = class temperaturePage {
         this.chosenRoom = "Living room";
         this.outsideTemperature = "+31";
         this.signTemperature = "+";
-        this.valueTemperature = "23";
+        this.valueTemperature = "16";
         this.signDegree = "C";
         this.maxTemperature = 25;
         this.minTemperature = 16;
+        this.blockCurTemp = {
+            transform: "rotate(-68deg)"
+        };
         this.isAutoTemperature = false;
+    }
+    rotate(clientXY) {
+        let center = {
+            x: 100,
+            y: 100
+        };
+        let rotate = 0;
+        this.blockCurTemp.transform = rotate;
     }
     onChangeAutoTemperature() {
         this.isAutoTemperature = (this.isAutoTemperature) ? false : true;
@@ -28,6 +39,7 @@ let temperaturePage = class temperaturePage {
         let curTemperature = parseInt(this.valueTemperature);
         curTemperature = ++curTemperature;
         if (curTemperature <= this.maxTemperature) {
+            this.rotate(curTemperature);
             this.valueTemperature = curTemperature.toString();
         }
     }

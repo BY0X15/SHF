@@ -12,15 +12,29 @@ export class temperaturePage {
   public outsideTemperature = "+31";
   //
   public signTemperature = "+";
-  public valueTemperature = "23";
+  public valueTemperature = "16";
   public signDegree = "C";
   //
   private maxTemperature = 25;
   private minTemperature = 16;
   //
+  public blockCurTemp = {
+    transform: "rotate(-68deg)" //cold = -68, hot = -39
+  };
   isAutoTemperature = false;
   //
   constructor() { }
+
+  rotate(clientXY) {
+    let center = {
+      x: 100,
+      y: 100
+    }
+    //
+    let rotate = 0;
+    //
+    this.blockCurTemp.transform = rotate;
+  }
 
   onChangeAutoTemperature() {
     this.isAutoTemperature = (this.isAutoTemperature) ? false : true;
@@ -30,6 +44,7 @@ export class temperaturePage {
     let curTemperature = parseInt(this.valueTemperature);
     curTemperature = ++curTemperature;
     if (curTemperature <= this.maxTemperature) {
+      this.rotate(curTemperature);
       this.valueTemperature = curTemperature.toString();
     }
   }
