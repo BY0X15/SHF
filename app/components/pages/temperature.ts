@@ -1,12 +1,10 @@
 import {Component, HostListener, ElementRef} from '@angular/core';
 import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 
-import {buttonChangeTemperature} from '../buttonChangeTemperature';
-
 @Component({
   selector: 'temperature',
   templateUrl: 'app/template/pages/temperature.html',
-  directives: [buttonChangeTemperature, ROUTER_DIRECTIVES]
+  directives: [ROUTER_DIRECTIVES]
 })
 
 export class temperaturePage {
@@ -17,24 +15,30 @@ export class temperaturePage {
   public valueTemperature = "23";
   public signDegree = "C";
   //
-  circle: any;
+  private maxTemperature = 25;
+  private minTemperature = 16;
   //
-  isDragging: boolean = true;
-  dragChild: any;
+  isAutoTemperature = false;
   //
-  constructor(private el:ElementRef) {
-    this.dragChild = {left: '0px', top: '0px'};
-    this.circle = el.nativeElement.getElementsByClassName("controlTemperature");
-    console.log(this.circle);
-  }
-  @HostListener('mousemove', ['$event'])
-  @HostListener('touchmove', ['$event'])
-  onDragMove(event) {
-    let clientY = event.clientY || event.touches[0].clientY;
-    let clientX = event.clientX || event.touches[0].clientX;
+  constructor() { }
 
-    var offset = 535;  // px
-    this.dragChild.top = clientY - offset + 275;
-    this.dragChild.left = clientX - offset;
+  onChangeAutoTemperature() {
+    this.isAutoTemperature = (this.isAutoTemperature) ? false : true;
+  }
+
+  onPlusTemperature() {
+    let curTemperature = parseInt(this.valueTemperature);
+    curTemperature = ++curTemperature;
+    if (curTemperature <= this.maxTemperature) {
+      this.valueTemperature = curTemperature.toString();
+    }
+  }
+
+  onMinusTemperature() {
+    let curTemperature = parseInt(this.valueTemperature);
+    curTemperature = --curTemperature;
+    if (curTemperature >= this.minTemperature) {
+      this.valueTemperature = curTemperature.toString();
+    }
   }
 }

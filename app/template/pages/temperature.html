@@ -14,8 +14,17 @@
     </div>
     <span class="blockCold"></span>
     <span class="blockHot"></span>
-    <buttonChangeTemperature [info]="dragChild"></buttonChangeTemperature>
+    <span class="blockCurTemp"></span>
   </div>
+
+  <div class="buttonChangeTemperature">
+    <div class="group">
+      <span class="plus" (click)="onPlusTemperature()"></span>
+      <span class="minus" (click)="onMinusTemperature()"></span>
+    </div>
+    <div class="autoTemperature" [ngClass]="{active: isAutoTemperature}" (click)="onChangeAutoTemperature()">AUTO</div>
+  </div>
+
 </div>
 
 <div class="selectionRoom">

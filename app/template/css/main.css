@@ -124,6 +124,7 @@ header > .logo {
   font-size: 13px;
   font-weight: 600;
   float: right;
+  margin-top: -25px;
 }
 .outsideTemperature > .active {
   font-size: 18px;
@@ -135,7 +136,7 @@ header > .logo {
   height: 300px;
   background: rgba(22,22,42,0.8);
   border-radius: 50%;
-  margin: 0 auto;
+  margin-left: 40px;
   position: relative;
 }
 .controlTemperature .linecircle {
@@ -144,7 +145,7 @@ header > .logo {
   width: 250px;
   height: 250px;
   border-radius: 50%;
-  position: absolute;
+  position: relative;
   top: 25px;
   left: 25px;
   -webkit-box-shadow: 0px 0px 10px rgba(0,0,0,.8);
@@ -195,12 +196,17 @@ header > .logo {
   right: 5px;
   position: absolute;
 }
-.controlTemperature .linecircle .buttonChangeTemperature {
+.controlTemperature .linecircle > .blockCurTemp {
+  background: #ffffff;
+  box-shadow: 0 0 40px #ffffff;
+  height: 60px;
+  width: 10px;
   position: absolute;
-  width: 50px;
-  height: 50px;
-  background: white;
-  cursor: pointer;
+  right: -10px;
+  top: 105px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  transform: rotate(95deg);
 }
 .controlTemperature .backgroundCenter {
   background: #191b2b;
@@ -247,8 +253,84 @@ header > .logo {
   font-size: 70px;
   font-weight: 100;
   color: white;
+  text-align: center;
+  width: 80px;
+  display: block;
   margin-left: 27px;
 }
+
+.buttonChangeTemperature {
+  position: absolute;
+  right: -200px;
+  top: 20px;
+}
+.buttonChangeTemperature > .group {
+  background: rgba(22,22,42,0.8);
+  border-radius: 5px;
+}
+.buttonChangeTemperature > .group > * {
+  width: 150px;
+  height: 95px;
+  display: block;
+  cursor: pointer;
+}
+.buttonChangeTemperature > .group > *:last-of-type {
+  border-top: 1px solid #251935;
+}
+.buttonChangeTemperature > .group > .plus:before {
+  content: '+';
+  position: absolute;
+  font-weight: 100;
+  font-size: 50px;
+  text-align: center;
+  width: 100%;
+  line-height: 95px;
+}
+.buttonChangeTemperature > .group > .minus:before {
+  content: '-';
+  position: absolute;
+  font-weight: 100;
+  font-size: 100px;
+  text-align: center;
+  width: 100%;
+  line-height: 95px;
+}
+.buttonChangeTemperature > .autoTemperature {
+  margin-top: 20px;
+  background: rgba(22,22,42,0.8);
+  border-radius: 5px;
+  height: 60px;
+  position: relative;
+  text-align: right;
+  line-height: 60px;
+  padding-right: 35px;
+  cursor: pointer;
+}
+.buttonChangeTemperature > .autoTemperature:before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 45%;
+  left: 30px;
+  border-radius: 2px;
+  width: 15px;
+  height: 5px;
+  background: red;
+  box-shadow: 0 0 15px red;
+}
+.buttonChangeTemperature > .autoTemperature.active:before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 45%;
+  left: 30px;
+  border-radius: 2px;
+  width: 15px;
+  height: 5px;
+  background: #00e800;
+  box-shadow: 0 0 15px #00e800;
+}
+
 .selectionRoom {
   margin-top: 10px;
   padding-top: 10px;
