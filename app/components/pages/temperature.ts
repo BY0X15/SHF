@@ -19,20 +19,19 @@ export class temperaturePage {
   private minTemperature = 16;
   //
   public blockCurTemp = {
-    transform: "rotate(-68deg)" //cold = -68, hot = -39
+    transform: "rotate(-68deg)" //cold = -68, hot = 39
   };
   isAutoTemperature = false;
   //
   constructor() { }
 
-  rotate(clientXY) {
-    let center = {
-      x: 100,
-      y: 100
-    }
-    //
-    let rotate = 0;
-    //
+  rotate(curTemp) {
+    const min = -68;
+    const step = 11.95;
+
+    let rotateDEG = min + ((curTemp - 16) * step);
+    let rotate = `rotate(${rotateDEG}deg)`;
+    
     this.blockCurTemp.transform = rotate;
   }
 
@@ -53,6 +52,7 @@ export class temperaturePage {
     let curTemperature = parseInt(this.valueTemperature);
     curTemperature = --curTemperature;
     if (curTemperature >= this.minTemperature) {
+      this.rotate(curTemperature);
       this.valueTemperature = curTemperature.toString();
     }
   }

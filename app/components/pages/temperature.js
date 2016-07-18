@@ -24,12 +24,11 @@ let temperaturePage = class temperaturePage {
         };
         this.isAutoTemperature = false;
     }
-    rotate(clientXY) {
-        let center = {
-            x: 100,
-            y: 100
-        };
-        let rotate = 0;
+    rotate(curTemp) {
+        const min = -68;
+        const step = 11.95;
+        let rotateDEG = min + ((curTemp - 16) * step);
+        let rotate = `rotate(${rotateDEG}deg)`;
         this.blockCurTemp.transform = rotate;
     }
     onChangeAutoTemperature() {
@@ -47,6 +46,7 @@ let temperaturePage = class temperaturePage {
         let curTemperature = parseInt(this.valueTemperature);
         curTemperature = --curTemperature;
         if (curTemperature >= this.minTemperature) {
+            this.rotate(curTemperature);
             this.valueTemperature = curTemperature.toString();
         }
     }
