@@ -1,6 +1,8 @@
 import {Component, HostListener, ElementRef} from '@angular/core';
 import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 
+import {temperatureControl} from '../../engine/temperature';
+
 @Component({
   selector: 'temperature',
   templateUrl: 'app/template/pages/temperature.html',
@@ -8,6 +10,12 @@ import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 })
 
 export class temperaturePage {
+  private tempControl = new temperatureControl();
+  private isError = {
+    status: false,
+    mode: "",
+    mess: ""
+  };
   public chosenRoom = "Living room";
   public outsideTemperature = "+31";
   //
@@ -24,7 +32,10 @@ export class temperaturePage {
   //
   isMovePanel = false;
   isAutoTemperature = false;
-  onPanelTopPX = '41px';
+  onPanelOpts = {
+    animation: false,
+    topPX: '41px'
+  };
   firstClickY = 0;
   //
   constructor() { }
@@ -40,7 +51,15 @@ export class temperaturePage {
   }
 
   onChangeAutoTemperature() {
-    this.isAutoTemperature = (this.isAutoTemperature) ? false : true;
+    this.tempControl.onEnableAutoTemperature(this.isAutoTemperature, (error, status) => {
+      if (error) {
+        this.isError.status = true;
+        this.isError.mode = 'Warning';
+        this.isError.mess = `Auto Temperature is not avaible. <br> Error code: 0x${error}`   
+        return;
+      }
+      this.isAutoTemperature = status;
+    });
   }
 
   onPlusTemperature() {
@@ -64,20 +83,23 @@ export class temperaturePage {
   onMouseEvent(event) {
     if (event.type === 'touchstart') {
       this.isMovePanel = true;
+      this.firstClickY = event.changedTouches[0].screenY;
+      this.onPanelOpts.animation = false;
     }
     if (event.type === 'touchend') {
       this.isMovePanel = false;
       if (event.srcElement.className !== 'header') return;
       let px = event.changedTouches[0].screenY - 530;
-      if (px > 42) {
-        px = 42
+      this.onPanelOpts.animation = true;
+      if (event.changedTouches[0].screenY === this.firstClickY) {
+        px = (px > 42) ? -300 : 42;
       } else {
-        px = -300;
+        px = (px > 42) ? 42 : -300;
       }
-      this.onPanelTopPX = `${px}px`;
+      this.onPanelOpts.topPX = `${px}px`;
     }
 
-    if (event.type === 'touchmove' && this.isMovePanel === true) {
+    if ((event.type === 'touchmove') && this.isMovePanel === true) {
       if (event.srcElement.className !== 'header') return;
       let minY = 174;
       let maxY = 530;
@@ -87,7 +109,7 @@ export class temperaturePage {
       } else if (px < -299) {
         px = -300;
       }
-      this.onPanelTopPX = `${px}px`;
+      this.onPanelOpts.topPX = `${px}px`;
     }
   }
 }

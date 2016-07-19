@@ -10,8 +10,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 const core_1 = require('@angular/core');
 const router_deprecated_1 = require('@angular/router-deprecated');
+const temperature_1 = require('../../engine/temperature');
 let temperaturePage = class temperaturePage {
     constructor() {
+        this.tempControl = new temperature_1.temperatureControl();
+        this.isError = {
+            status: false,
+            mode: "",
+            mess: ""
+        };
         this.chosenRoom = "Living room";
         this.outsideTemperature = "+31";
         this.signTemperature = "+";
@@ -24,7 +31,10 @@ let temperaturePage = class temperaturePage {
         };
         this.isMovePanel = false;
         this.isAutoTemperature = false;
-        this.onPanelTopPX = '41px';
+        this.onPanelOpts = {
+            animation: false,
+            topPX: '41px'
+        };
         this.firstClickY = 0;
     }
     rotate(curTemp) {
@@ -35,7 +45,15 @@ let temperaturePage = class temperaturePage {
         this.blockCurTemp.transform = rotate;
     }
     onChangeAutoTemperature() {
-        this.isAutoTemperature = (this.isAutoTemperature) ? false : true;
+        this.tempControl.onEnableAutoTemperature(this.isAutoTemperature, (error, status) => {
+            if (error) {
+                this.isError.status = true;
+                this.isError.mode = 'Warning';
+                this.isError.mess = `Auto Temperature is not avaible. <br> Error code: 0x${error}`;
+                return;
+            }
+            this.isAutoTemperature = status;
+        });
     }
     onPlusTemperature() {
         let curTemperature = parseInt(this.valueTemperature);
@@ -56,21 +74,24 @@ let temperaturePage = class temperaturePage {
     onMouseEvent(event) {
         if (event.type === 'touchstart') {
             this.isMovePanel = true;
+            this.firstClickY = event.changedTouches[0].screenY;
+            this.onPanelOpts.animation = false;
         }
         if (event.type === 'touchend') {
             this.isMovePanel = false;
             if (event.srcElement.className !== 'header')
                 return;
             let px = event.changedTouches[0].screenY - 530;
-            if (px > 42) {
-                px = 42;
+            this.onPanelOpts.animation = true;
+            if (event.changedTouches[0].screenY === this.firstClickY) {
+                px = (px > 42) ? -300 : 42;
             }
             else {
-                px = -300;
+                px = (px > 42) ? 42 : -300;
             }
-            this.onPanelTopPX = `${px}px`;
+            this.onPanelOpts.topPX = `${px}px`;
         }
-        if (event.type === 'touchmove' && this.isMovePanel === true) {
+        if ((event.type === 'touchmove') && this.isMovePanel === true) {
             if (event.srcElement.className !== 'header')
                 return;
             let minY = 174;
@@ -82,7 +103,7 @@ let temperaturePage = class temperaturePage {
             else if (px < -299) {
                 px = -300;
             }
-            this.onPanelTopPX = `${px}px`;
+            this.onPanelOpts.topPX = `${px}px`;
         }
     }
 };

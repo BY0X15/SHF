@@ -1,9 +1,14 @@
+<div id="error" [hidden]="!isError.status">
+  <span class="title">{{isError.mode}}</span>
+  <span class="mess">{{isError.mess}}</span>
+</div>
+
 <div class="outsideTemperature">
   outside <b class="active">{{outsideTemperature}}&deg;</b>
 </div>
 
 <div id="circle" class="controlTemperature">
-  <span class="blockCurTemp" [ngStyle]="{transform: blockCurTemp.transform}"></span>
+  <span class="blockCurTemp" [ngClass]="{auto: isAutoTemperature}" [ngStyle]="{transform: blockCurTemp.transform}"></span>
   <div class="linecircle">
     <div class="backgroundCenter">
       <div class="blockInformation">
@@ -28,7 +33,7 @@
 </div>
 
 <div class="selectRoom">
-  <div class="container"  [ngStyle]="{'margin-top': onPanelTopPX}" (touchend)="onMouseEvent($event)" (touchstart)="onMouseEvent($event)" (touchmove)="onMouseEvent($event)" (mouseup)="onMouseEvent($event)" (mousedown)="onMouseEvent($event)" (mousemove)="onMouseEvent($event)">
+  <div class="container" [ngClass]="{'animated': onPanelOpts.animation}" [ngStyle]="{'margin-top': onPanelOpts.topPX}" (touchend)="onMouseEvent($event)" (touchstart)="onMouseEvent($event)" (touchmove)="onMouseEvent($event)">
     <div class="content">
       <div class="header">
         Selection room: <b>{{chosenRoom}}</b>

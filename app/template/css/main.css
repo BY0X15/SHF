@@ -42,6 +42,24 @@ ul, li {
   clear: both;
 }
 
+#error {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(183,156,47,0.95);
+  z-index: 100;
+  color: black;
+  padding: 50px;
+}
+#error > .title {
+  text-align: center;
+  font-size: 40px;
+  font-weight: 500;
+  display: block;
+}
+
 app-content {
   width: 800px;
   height: 480px;
@@ -204,7 +222,7 @@ main > .content.homePage {
   position: absolute;
   top: 48.5%;
   left: 50%;
-  transition: all 3s;
+  transition: all 2s;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
   -webkit-transform-origin: center left;
@@ -212,6 +230,10 @@ main > .content.homePage {
   -ms-transform-origin: center left;
   -o-transform-origin: center left;
   transform-origin: center left;
+}
+.controlTemperature .blockCurTemp.auto {
+  background: #00e800;
+  box-shadow: 0 0 40px #00e800;
 }
 .controlTemperature .backgroundCenter {
   background: #191b2b;
@@ -258,6 +280,7 @@ main > .content.homePage {
   font-size: 70px;
   font-weight: 100;
   color: white;
+  text-shadow: 0 0 20px #ffffff;
   text-align: center;
   width: 80px;
   display: block;
@@ -322,6 +345,7 @@ main > .content.homePage {
   height: 5px;
   background: red;
   box-shadow: 0 0 15px red;
+  transition: all .3s;
 }
 .buttonChangeTemperature > .autoTemperature.active:before {
   content: '';
@@ -340,6 +364,9 @@ main > .content.homePage {
   width: 100%;
   padding: 48px 0;
   position: relative;
+}
+.selectRoom > .container.animated {
+  transition: all .3s;
 }
 .selectRoom > .container {
   position: absolute;
