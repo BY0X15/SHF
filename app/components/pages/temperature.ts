@@ -2,6 +2,7 @@ import {Component, HostListener, ElementRef} from '@angular/core';
 import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 
 import {temperatureControl} from '../../engine/temperature';
+import {common} from '../common';
 
 @Component({
   selector: 'temperature',
@@ -11,11 +12,6 @@ import {temperatureControl} from '../../engine/temperature';
 
 export class temperaturePage {
   private tempControl = new temperatureControl();
-  private isError = {
-    status: false,
-    mode: "",
-    mess: ""
-  };
   public chosenRoom = "Living room";
   public outsideTemperature = "+31";
   //
@@ -53,9 +49,10 @@ export class temperaturePage {
   onChangeAutoTemperature() {
     this.tempControl.onEnableAutoTemperature(this.isAutoTemperature, (error, status) => {
       if (error) {
-        this.isError.status = true;
-        this.isError.mode = 'Warning';
-        this.isError.mess = `Auto Temperature is not avaible. <br> Error code: 0x${error}`   
+        // common.isError.status = true;
+        // this.isError.status = true;
+        // this.isError.mode = 'Warning';
+        // this.isError.mess = `Auto Temperature is not avaible. <br> Error code: 0x${error}`
         return;
       }
       this.isAutoTemperature = status;

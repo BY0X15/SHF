@@ -18,6 +18,11 @@ let common = class common {
         this.username = '';
         this.isHomePage = false;
         this.menuButtonTitle = 'Menu';
+        this.isError = {
+            status: false,
+            mode: "",
+            mess: ""
+        };
         this.username = "Dmitry";
         this.isHomePage = (location.pathname == '/home') ? true : false;
         this.menuButtonTitle = (this.isHomePage) ? 'Menu' : 'Home';

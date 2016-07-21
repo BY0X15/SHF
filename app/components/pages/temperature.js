@@ -14,11 +14,6 @@ const temperature_1 = require('../../engine/temperature');
 let temperaturePage = class temperaturePage {
     constructor() {
         this.tempControl = new temperature_1.temperatureControl();
-        this.isError = {
-            status: false,
-            mode: "",
-            mess: ""
-        };
         this.chosenRoom = "Living room";
         this.outsideTemperature = "+31";
         this.signTemperature = "+";
@@ -47,9 +42,6 @@ let temperaturePage = class temperaturePage {
     onChangeAutoTemperature() {
         this.tempControl.onEnableAutoTemperature(this.isAutoTemperature, (error, status) => {
             if (error) {
-                this.isError.status = true;
-                this.isError.mode = 'Warning';
-                this.isError.mess = `Auto Temperature is not avaible. <br> Error code: 0x${error}`;
                 return;
             }
             this.isAutoTemperature = status;

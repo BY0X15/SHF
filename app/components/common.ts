@@ -22,6 +22,13 @@ export class common {
   username = '';
   isHomePage = false;
   menuButtonTitle = 'Menu';
+  //
+  public isError = {
+    status: false,
+    mode: "",
+    mess: ""
+  };
+  //
   constructor() {
     this.username = "Dmitry";
     this.isHomePage = (location.pathname == '/home') ? true : false;
