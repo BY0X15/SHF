@@ -11,6 +11,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 const core_1 = require('@angular/core');
 const router_deprecated_1 = require('@angular/router-deprecated');
 let leftmenu = class leftmenu {
+    constructor() {
+        this.isTemperaturePage = false;
+        this.isTemperaturePage = false;
+        if (location.pathname === '/temperature') {
+            this.isTemperaturePage = true;
+        }
+    }
 };
 leftmenu = __decorate([
     core_1.Component({

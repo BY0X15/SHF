@@ -34,7 +34,7 @@ export class temperaturePage {
   };
   firstClickY = 0;
   //
-  constructor() { }
+  constructor() {}
 
   rotate(curTemp) {
     const min = -68;

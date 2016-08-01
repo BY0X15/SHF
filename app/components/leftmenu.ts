@@ -7,4 +7,16 @@ import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
   directives: [ROUTER_DIRECTIVES]
 })
 
-export class leftmenu { }
+export class leftmenu {
+
+  isTemperaturePage = false;
+
+  constructor() {
+
+    this.isTemperaturePage = false;
+
+    if (location.pathname === '/temperature') {
+      this.isTemperaturePage = true;
+    }
+  }
+}

@@ -1,6 +1,6 @@
 <div class="leftmenu">
   <ul>
-    <li class="temperature active">
+    <li class="temperature" [ngClass]="{active: isTemperaturePage}">
       <a [routerLink]="['Temperature']">Temperature</a>
     </li>
     <li class="lights">
